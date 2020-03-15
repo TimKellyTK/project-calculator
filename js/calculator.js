@@ -57,6 +57,11 @@ function divide(a, b) {
     if(a && b) {
         return a / b
     } else {
+        displayValue = '';
+        n1 = 0;
+        n2 = 0;
+        operator = '';
+        displayContainer.textContent = 0;
         return alert("You snake! If you divide by 0, you get nothing AND break the calculator")
     }
 }
@@ -97,10 +102,17 @@ function clickOperator(string) {
 }
 
 function clickEqual(a, operator) {
-    n2 = Number(displayValue)
-    n1 = Math.round((operate(a,n2,operator) + Number.EPSILON) * 100) / 100
-    displayValue = n1
-    return displayContainer.textContent = displayValue
+    if (n1 && displayValue) {
+        n2 = Number(displayValue)
+        n1 = Math.round((operate(a,n2,operator) + Number.EPSILON) * 100) / 100
+        displayValue = n1
+        if (displayValue == 0) {
+            displayValue = '';
+            displayValue.textContent = 0;
+        } else {
+        displayContainer.textContent = displayValue
+        }
+    } 
 }
 
 function clickClear() {
@@ -110,12 +122,3 @@ function clickClear() {
     displayValue = ''
     return displayContainer.textContent = 0
 }
-
-/* Bugs you need to fix for
-1. Pressing = before entering all the numbers or an operator could cause problems
-2. Show an error message if the user tries to divide by 0 -> still broken */
-
-/* Next steps
-1. Post online github link
-2. Share with Nathan to get him ready for remote pairing
-3. Pull solution into the TOP curriculum */
