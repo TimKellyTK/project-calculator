@@ -78,6 +78,7 @@
   -ms-flex-align: center;
   align-items: center;
   background-color: #7c7e85;
+  cursor: pointer;
 }
 
 .clear-button:active {
@@ -100,6 +101,7 @@
   align-items: center;
   background-color: #f8a735;
   font-size: 35px;
+  cursor: pointer;
 }
 
 .operator-button:active {
@@ -121,6 +123,7 @@
   -ms-flex-align: center;
   align-items: center;
   background-color: #a3a3a3;
+  cursor: pointer;
 }
 
 .number-button:active {
