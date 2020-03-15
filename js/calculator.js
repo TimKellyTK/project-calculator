@@ -113,4 +113,9 @@ function clickClear() {
 
 /* Bugs you need to fix for
 1. Pressing = before entering all the numbers or an operator could cause problems
-2. Show an error message if the user tries to divide by 0 -> still broken*/
+2. Show an error message if the user tries to divide by 0 -> still broken */
+
+/* Next steps
+1. Post online github link
+2. Share with Nathan to get him ready for remote pairing
+3. Pull solution into the TOP curriculum */
