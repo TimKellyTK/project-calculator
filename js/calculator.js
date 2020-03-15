@@ -1,4 +1,36 @@
-// Calculator functions for add, substract, multiply, divide and operate
+// DOM selectors for calculator buttons 
+
+const displayContainer = document.querySelector('.number-container')
+const numberBtns = document.querySelectorAll('.number-button')
+const operatorBtns = document.querySelectorAll('.operator-button:not(#equal)')
+const equalBtn = document.querySelector('#equal')
+const clearBtn = document.querySelector('.clear-button')
+
+// Event listeners for calculator buttons
+
+numberBtns.forEach((button) => {
+
+    button.addEventListener('click', (e) => {
+      alert(button.textContent.replace(/\s/g, ""));
+    });
+});
+
+operatorBtns.forEach((button) => {
+
+button.addEventListener('click', (e) => {
+    alert(button.textContent.replace(/\s/g, ""));
+    });
+});
+
+equalBtn.addEventListener('click', function (e) {
+    alert(e.target.textContent.replace(/\s/g, ""));
+});
+
+clearBtn.addEventListener('click', function (e) {
+    alert(e.target.textContent.replace(/\s/g, ""));
+});
+
+// Functions for calculator
 
 function add(n1, n2) {
     return n1 + n2
@@ -40,36 +72,8 @@ function operate(n1, n2, operator) {
     }
 }
 
-// DOM selectors for calculator buttons 
+// Functions for button clicks
 
-const displayContainer = document.querySelector('.number-container')
-const numberBtns = document.querySelectorAll('.number-button')
-const operatorBtns = document.querySelectorAll('.operator-button:not(#equal)')
-const equalBtn = document.querySelector('#equal')
-const clearBtn = document.querySelector('.clear-button')
-
-// Event listeners for calculator buttons
-numberBtns.forEach((button) => {
-
-    button.addEventListener('click', (e) => {
-      alert(button.textContent.replace(/\s/g, ""));
-    });
-});
-
-operatorBtns.forEach((button) => {
-
-button.addEventListener('click', (e) => {
-    alert(button.textContent.replace(/\s/g, ""));
-    });
-});
-
-equalBtn.addEventListener('click', function (e) {
-    alert(e.target.textContent.replace(/\s/g, ""));
-});
-
-clearBtn.addEventListener('click', function (e) {
-    alert(e.target.textContent.replace(/\s/g, ""));
-});
 
 /* The next things to create:
 5. For number clicks, get the number and add it to a displayValue variable ('string' + 'string') and update displayContainer.InnerText
