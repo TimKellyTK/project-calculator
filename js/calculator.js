@@ -1,3 +1,10 @@
+// Javascript variables
+let displayValue = '';
+let n1;
+let n2;
+let operator;
+
+
 // DOM selectors for calculator buttons 
 
 const displayContainer = document.querySelector('.number-container')
@@ -11,60 +18,62 @@ const clearBtn = document.querySelector('.clear-button')
 numberBtns.forEach((button) => {
 
     button.addEventListener('click', (e) => {
-      alert(button.textContent.replace(/\s/g, ""));
+      let number = button.textContent.replace(/\s/g, "")
+      clickNumber(number);
     });
 });
 
 operatorBtns.forEach((button) => {
 
 button.addEventListener('click', (e) => {
-    alert(button.textContent.replace(/\s/g, ""));
+    let operator = button.textContent.replace(/\s/g, "")
+    clickOperator(operator);
     });
 });
 
 equalBtn.addEventListener('click', function (e) {
-    alert(e.target.textContent.replace(/\s/g, ""));
+    clickEqual(n1, operator)
 });
 
 clearBtn.addEventListener('click', function (e) {
-    alert(e.target.textContent.replace(/\s/g, ""));
+    clickClear()
 });
 
 // Functions for calculator
 
-function add(n1, n2) {
-    return n1 + n2
+function add(a, b) {
+    return a + b
 }
 
-function substract(n1, n2) {
-    return n1 - n2
+function substract(a, b) {
+    return a - b
 }
 
-function multiply(n1, n2) {
-    return n1 * n2
+function multiply(a, b) {
+    return a * b
 }
 
-function divide(n1, n2) {
-    if(n1 && n2) {
-        return n1 / n2
+function divide(a, b) {
+    if(a && b) {
+        return a / b
     } else {
         return alert("You snake! If you divide by 0, you get nothing AND break the calculator")
     }
 }
 
-function operate(n1, n2, operator) {
+function operate(a, b, operator) {
     switch(operator) {
         case(operator = "+"):
-        return add(n1,n2)
+        return add(a,b)
 
-        case(operator = "-"): 
-        return substract(n1,n2)
+        case(operator = "−"): 
+        return substract(a,b)
 
-        case(operator = "*"):
-        return multiply(n1,n2)
+        case(operator = "×"):
+        return multiply(a,b)
 
-        case(operator = "/"):
-        return divide(n1,n2)
+        case(operator = "÷"):
+        return divide(a,b)
 
         default:
             alert("Not a valid operator")
@@ -74,21 +83,36 @@ function operate(n1, n2, operator) {
 
 // Functions for button clicks
 
+function clickNumber(number) {
+    displayValue += `${number}`
+    return displayContainer.textContent = displayValue
+}
 
-/* The next things to create:
-5. For number clicks, get the number and add it to a displayValue variable ('string' + 'string') and update displayContainer.InnerText
-6. For operator clicks, store the old displayValue in n1 variable, get the operator value and store it in a operator variable 
-and reset the displayValue to 0 and update the displayContainer.InnerText
-7. For equal clicks, store the displayValue as n2 variable and set the new displayValue = operator(n1,n2,operator) and udpate the displayContainer.InnerText
-8. For clear clicks, make the variables n1, n2, operator and displayValue = 0 and update the displayContainer.InnerText
-*/
+function clickOperator(string) {
+    operator = string
+    if (displayValue > 0) {
+        n1 = Number(displayValue)
+        displayValue = '';
+    }
+}
 
-/* Make the calc. work! Store first number n1 as an input when a user presses an operator
-and also save which operation has been chosen and then use the operate function when the user presses the = key */
+function clickEqual(a, operator) {
+    n2 = Number(displayValue)
+    n1 = Math.round((operate(a,n2,operator) + Number.EPSILON) * 100) / 100
+    displayValue = n1
+    return displayContainer.textContent = displayValue
+}
+
+function clickClear() {
+    n1 = '';
+    n2 = '';
+    operator = '';
+    return displayContainer.textContent = 0
+}
 
 /* Bugs you need to fix for
 1. String together operations -> 12 + 7 - 5 * 3
 2. Round answers with long decimals so they don't overflow the screen
 3. Pressing = before entering all the numbers or an operator could cause problems
 4. Make sure the 'clear' really clears everything 
-5. Show an error message if the user tries to divide by 0*/
+5. Show an error message if the user tries to divide by 0 -> still broken*/
