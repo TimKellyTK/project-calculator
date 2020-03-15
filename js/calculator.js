@@ -107,12 +107,10 @@ function clickClear() {
     n1 = '';
     n2 = '';
     operator = '';
+    displayValue = ''
     return displayContainer.textContent = 0
 }
 
 /* Bugs you need to fix for
-1. String together operations -> 12 + 7 - 5 * 3
-2. Round answers with long decimals so they don't overflow the screen
-3. Pressing = before entering all the numbers or an operator could cause problems
-4. Make sure the 'clear' really clears everything 
-5. Show an error message if the user tries to divide by 0 -> still broken*/
+1. Pressing = before entering all the numbers or an operator could cause problems
+2. Show an error message if the user tries to divide by 0 -> still broken*/
